@@ -14,7 +14,7 @@ public class Depot {
     }
     
     public String getName() {
-        return address.toString();
+        return name;
     }
     
     public Coordinates getCoordinates() {

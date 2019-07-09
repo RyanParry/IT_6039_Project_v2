@@ -40,6 +40,7 @@ public class Example {
         System.out.println(customer);
 
         Manifest manifest = new Manifest();
+        Manifest manifest2 = new Manifest();
         manifest.addProduct(new Product("Hammer", 3, false, false), 1);
         manifest.addProduct(new Product("Nails", 1, false, false), 12);
         manifest.addProduct(new Product("Ladder", 15, false, false), 2);
@@ -49,13 +50,18 @@ public class Example {
 
         System.out.println("\nMANIFEST (to be packed):");
         System.out.println(manifest);
+        System.out.println(manifest.isEmpty());
+        System.out.println(manifest2.isEmpty());
+        
 
         System.out.println("\nPACKING:");
         List<Box> done = Packer.packProducts(customer, depot, manifest);
         
         // Results
         for (Box b : done) {
+            System.out.println("");
             System.out.println(b);
+            
         }
         
     }

@@ -22,13 +22,13 @@ public class Packer {
                 b = null;
             }
             else {
-                b.addProduct(prodToAdd);
+                b.addProduct(prodToAdd);   
                 m.removeProduct(prodToAdd);
             }  
         }
         if (b != null) {
             packedBoxes.add(b);
-            packedBoxes.add(b);
+            //packedBoxes.add(b);
         }
         return packedBoxes;
     }

@@ -27,7 +27,7 @@ public class Manifest {
     
     public void addProduct(Product p, int quantity) {
         if (quantities.containsKey(p)) {
-            quantities.put(p,quantities.get(p)*quantity);
+            quantities.put(p,quantities.get(p) + quantity);
         }
         else {
             quantities.put(p,quantity);
@@ -36,23 +36,24 @@ public class Manifest {
             }
         }
     }
-    
     public void removeProduct(Product p) {
-        if (quantities.containsKey(p) && quantities.get(p) > 0) {
-            quantities.put(p,quantities.get(p)-1);
-        }
-        if (quantities.get(p) == 0) {
-            quantities.remove(p);
-        }
-        if (quantities.containsKey(p)) {
-            byWeight.remove(p);
+        if (quantities.containsKey(p) && quantities.get(p) > 0) 
+            if (quantities.get(p) == 1) {
+                quantities.remove(p);
+                byWeight.remove(p);
+            }
+             else {
+            quantities.put(p,quantities.get(p) - 1);
+
         }
     }
+   
+    
     
     public double getTotalWeight() {
         double weight = 0;
         for (Product p : quantities.keySet()) {
-            weight = quantities.get(p) * p.getWeight();
+            weight = weight + (quantities.get(p) * p.getWeight());
         }
         return weight;
     }
@@ -67,13 +68,23 @@ public class Manifest {
     }
     
     public boolean isEmpty() {
-        return byWeight.isEmpty();
+        int itemsLeft = 0;
+        for (Product p : quantities.keySet()) {
+            itemsLeft = itemsLeft + quantities.get(p);
+        }
+        if(itemsLeft > 0){
+            return false;
+        }
+        else {
+            return true;
+        }
     }
     
     public boolean containsProduct(Product p) {
         return quantities.containsKey(p) && quantities.get(p) > 0;
     }
     
+ 
     public String toString() {
         StringBuilder result = new StringBuilder();
         for (Product p : quantities.keySet()) {
@@ -82,7 +93,13 @@ public class Manifest {
             result.append(quantities.get(p));
             result.append("\n");
         }
-        return result.substring(0, result.length()-1);
+        if (result.length() >= 1){
+            return result.substring(0, result.length()-1);
+        }
+        else {
+            return result.substring(0, result.length());
+        }
+        
     }
     
     public boolean hasFragileItems() {
@@ -94,4 +111,13 @@ public class Manifest {
         return false;
     }
     
+    public boolean hasHazardousItems() {
+        for (Product p : quantities.keySet()) {
+            if (p.isHazardous()) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
 

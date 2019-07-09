@@ -72,11 +72,7 @@ public class BoxTest {
         testBox3.addProduct(a4, 4);
         assertEquals("Test Customer\n321 Back St\nChristly\nHolly Oaks\nC333\n"
                 + "Alpha x 4\nHAZARD\nHEAVY", testBox3.toString());
-        System.out.println(testBox1.toString());
-        testBox4.addProduct(a1, 2);
-        testBox4.addProduct(a2, 8);
-        assertEquals("Test Customer\n111 Emerge Rd\nReally\nInn Town\nD444\n"
-                + "Alpha1 x 2\nAlpha x 8\nFRAGILE\nHAZARD\nHEAVY", testBox4.toString());
+        
     }
 
     /**
