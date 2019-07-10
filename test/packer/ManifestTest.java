@@ -144,11 +144,15 @@ public class ManifestTest {
         assertEquals("Alpha2 x 1", m2.toString());
         assertEquals("Alpha2 x 6", m3.toString());
         assertEquals("AlphaBet x 1", m4.toString());
+        m4.addProduct(a2, 2);
+        assertEquals("Alpha2 x 2\nAlphaBet x 1", m4.toString());
         m3.removeProduct(a2);
-        System.out.println(m3.toString());
+        //System.out.println(m3.toString());
         assertEquals("Alpha2 x 5", m3.toString());
         m3.removeProduct(a2);
         assertEquals("Alpha2 x 4", m3.toString());
+        m3.addProduct(a3);
+        assertEquals("Alpha2 x 4\nAlpha3 x 1", m3.toString());
     }
 
     /**
@@ -179,9 +183,9 @@ public class ManifestTest {
         m4.addProduct(a4);
         m4.addProduct(a2, 2);
         m4.addProduct(a1, 2);
-        assertEquals(true, m1.hasFragileItems());
-        assertEquals(false, m2.hasFragileItems());
-        assertEquals(false, m3.hasFragileItems());
-        assertEquals(true, m4.hasFragileItems());
+        assertEquals(true, m1.hasHazardousItems());
+        assertEquals(false, m2.hasHazardousItems());
+        assertEquals(false, m3.hasHazardousItems());
+        assertEquals(true, m4.hasHazardousItems());
     }
 }
