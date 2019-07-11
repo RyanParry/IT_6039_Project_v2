@@ -63,7 +63,7 @@ public class BoxTest {
     public void testToString() {
         testBox1.addProduct(a3);
         System.out.println("To String Test Are....");
-        System.out.println(testBox1.toString());
+        //System.out.println(testBox1.toString());
         assertEquals("Test Customer\n321 Back St\nChristly\nHolly Oaks\nC333\n"
                 + "Alpha x 1\nFRAGILE", testBox1.toString());
         testBox2.addProduct(a4);
