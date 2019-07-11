@@ -31,13 +31,32 @@ public class ProductWeightComparatorTest {
     Product a4 = new Product("Alpha4", 4, true, false);
     Product a5 = new Product("AlphaBet", 24, false, false);
     
-
+    ProductWeightComparator pw1 = new ProductWeightComparator();
+    
     /**
      * Test of compare method, of class ProductWeightComparator.
      */
     @Test
-    public void testCompare() {
-        //arrertEquals(1, ProductWeightComparator.compare(a1, a2));
+    public void testCompare() {    
+        assertEquals(1, pw1.compare(a1, a2));
+        assertEquals(1, pw1.compare(a1, a3));
+        assertEquals(1, pw1.compare(a1, a4));
+        assertEquals(1, pw1.compare(a1, a5));
+        assertEquals(1, pw1.compare(a2, a3));
+        assertEquals(1, pw1.compare(a3, a4));
+        assertEquals(1, pw1.compare(a4, a5));
+        assertEquals(-1, pw1.compare(a2, a1));
+        assertEquals(-1, pw1.compare(a3, a1));
+        assertEquals(-1, pw1.compare(a4, a1));
+        assertEquals(-1, pw1.compare(a5, a1));
+        assertEquals(-1, pw1.compare(a3, a2));
+        assertEquals(-1, pw1.compare(a4, a3));
+        assertEquals(-1, pw1.compare(a4, a2));
+        assertEquals(0, pw1.compare(a1, a1));
+        assertEquals(0, pw1.compare(a2, a2));
+        assertEquals(0, pw1.compare(a3, a3));
+        assertEquals(0, pw1.compare(a4, a4));
+        assertEquals(0, pw1.compare(a5, a5));
         
     }
     

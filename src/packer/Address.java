@@ -1,7 +1,8 @@
 package packer;
 
 /**
- *
+ *This is address format used for customer and depot addresses
+ *  
  * @author I.M.Bad
  */
 public class Address {
@@ -18,7 +19,11 @@ public class Address {
         this.postcode = postcode;
         this.coordinates = coordinates;
     }
-
+    
+    
+    /**
+     * @return the the address as a string over 4 lines
+     */
     public String toString() {
         return 
                 street + "\n" +
