@@ -15,12 +15,19 @@ public class Product {
     /**
      * This is the construct, it takes the parameters and makes a product
      * 
+     * @throws IllegalAgrumentException stops the appliction being used to try to
+     * pack product to heavy for the boxes
+     * 
      * @param name is the product name
      * @param weight is the product weight in kg
      * @param hazardous is whether the product is hazardous
      * @param fragile is whether the product is fragile
      */
     public Product(String name, int weight, boolean hazardous, boolean fragile) {
+        if(weight > 20 ){
+            throw new IllegalArgumentException("Product: " + name + 
+                    " is to heavy to be Packed");
+        }
         this.name = name;
         this.weight = weight;
         this.hazardous = hazardous;
