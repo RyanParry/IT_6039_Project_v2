@@ -10,6 +10,7 @@ public class Box {
     private Manifest contents;
     private Customer customer;
     private Depot depot;
+    private int boxCapacity = 20;
     
     /**
     *This is the box constructor, contents only change when products are
@@ -109,7 +110,7 @@ public class Box {
      * @return true it will fit else false
      */
     public boolean canFit(Product p, int quantity) {
-        return (p.getWeight() * quantity) < 20;
+        return (p.getWeight() * quantity) < boxCapacity;
     }
 
     /**
@@ -118,7 +119,7 @@ public class Box {
      * @return double of kilograms that could still be put in box
      */
     public double remainingCapacity() {
-        return 20 - this.getWeight();
+        return boxCapacity - this.getWeight();
     }
 
     /**
